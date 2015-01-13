@@ -1,11 +1,10 @@
 package com.research.spring.service.impl;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.memory.InMemoryDaoImpl;
 
-import com.research.spring.service.IUserService;
-
-public class UserServiceImpl extends InMemoryDaoImpl implements IUserService{
+public class UserServiceImpl extends InMemoryDaoImpl{
 
 	public void changePassword(String username, String password) {
 		// get the UserDetails

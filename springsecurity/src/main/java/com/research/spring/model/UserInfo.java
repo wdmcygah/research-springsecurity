@@ -1,33 +1,30 @@
 package com.research.spring.model;
 
+import java.util.Collection;
 
-public class UserInfo {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 
-	private String userName;
+
+public class UserInfo extends User{
+	private static final long serialVersionUID = 1L;
+	private String salt; 
 	
-	private String password;
-
-	public String getUserName() {
-		return userName;
+	public UserInfo(String username, String password, boolean enabled,
+			boolean accountNonExpired, boolean credentialsNonExpired,
+			boolean accountNonLocked,
+			Collection<? extends GrantedAuthority> authorities,String salt) {
+		super(username, password, enabled, accountNonExpired, credentialsNonExpired,
+				accountNonLocked, authorities);
+		this.salt = salt;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public String getSalt() {
+		return salt;
 	}
 
-	public String getPassword() {
-		return password;
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	@Override
-	public String toString() {
-		return "UserInfo [userName=" + userName + ", password=" + password
-				+ "]";
-	}
-
 	
 }
